@@ -1,51 +1,58 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
-
 public class Demo {
-
-        public static void main(String[] args) {
-
-                Scanner sc=new Scanner(System.in);
-
-                int score=0;
-                System.out.println("WELCOME TO ///LEVEL 1/// ANSWER THE PROBLEM CORRECTLY TO MOVE ON ");
-                System.out.println("============================================================================");
-
-                
-         
-                while(score<5)
-                {
-                        boolean pass=Level1Stage.askQuestion();
-                        if(pass)
-                                score++;
+    
+    public static void main(String[] args) {
+        Ship[] list= new Ship[10];
+        try {
+            Scanner scanner=new Scanner(new File("Shipinfo.txt"));
+            
+            int i=0;
+            while (scanner.hasNextLine()) {
+                String data[] = scanner.nextLine().split(":");
+                String temp=data[2].trim();
+                if(temp.equals("Ship")){
+                    list[i++]=new Ship(data[0].trim(),data[1].trim());
                 }
-
-                System.out.println("LEVEL 1 PASSED, YOU DID IT!!!!!!! NOW GET READY FOR LEVEL 2");
-                System.out.println("///////// LEVEL 2 ///////////");
-                System.out.println("============================================================================");
-                score=0;
-                
-                while(score<5)
-                {
-                        boolean pass=Level2Stage.askQuestion();
-                        if(pass)
-                                score++;
-
+                else if(temp.equals("CruiseShip")) {
+                    list[i++]=new CruiseShip(data[0].trim(),data[1].trim(),Integer.parseInt(data[3].trim()));
                 }
-
-                System.out.println("LEVEL 2 PASSED, YOU DID IT!!!!!!! NOW GET READY FOR LEVEL 3");
-                System.out.println("////////// LEVEL 3 ///////////");
-                System.out.println("============================================================================");
-                score=0;
-                
-                while( score<5)
+                else if(temp.equals("CargoShip"))
                 {
-                        boolean pass=Level3Stage.askQuestion();
-                        if(pass)
-                                score++;
+                    list[i++]=new Cargo(data[0].trim(),data[1].trim(),Integer.parseInt(data[3].trim()));
                 }
-
-                System.out.println("LEVEL 3 PASSED, CONGRATS YOU FINISHED!!!!!!!!!!");
-
+            }
+            scanner.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("An error, There isnt a file with that name.");
+                e.printStackTrace();
+            }
+            for(int i=0;i<list.length;i++)
+            {
+                System.out.println(list[i].toString());
+            }
+            //System.out.println("---------------------------------------");
+            Arrays.sort(list);
+            System.out.println("----------------------------------------");
+            System.out.println("\n\n--------After sorting According to the year :------ \n\n");
+            System.out.println("-----------------------------------------");
+            for(int i=0;i<list.length;i++)
+            {
+                System.out.println(list[i].toString());
+            }
         }
-
-}
+    }
+    
+                
+                    
+                    
+                
+                    
+                
+                
+                
+            
+            
+            

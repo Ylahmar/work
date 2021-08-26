@@ -1,0 +1,11 @@
+Name: Years Build: Type : Capacity (Cargo or Passengers)
+Great White: 1995: Ship
+Bermuda: 2001: Ship
+Princess Diamond: 2002: CruiseShip: 3600
+Beast: 2020: CargoShip: 500000
+Princess Grand: 2017: CruiseShip: 2700
+Princess Hope: 1999: CruiseShip: 1500
+Monster: 2002: CargoShip: 200000
+Wall: 2015: CargoShip: 2340000
+Love Boat: 2005: Ship
+Turbo: 2013: CargoShip: 1540000
